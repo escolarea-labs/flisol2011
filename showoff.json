@@ -1,0 +1,7 @@
+{ 
+    "name": "Introducción al desarrollo web",
+    "sections": 
+        [ 
+            {"section":"basics"},
+        ]
+    }
