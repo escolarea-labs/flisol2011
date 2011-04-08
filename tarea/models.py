@@ -1,3 +1,7 @@
 from django.db import models
+from lista.models import Lista
 
-# Create your models here.
+class Tarea(models.Model):
+    descripcion = models.TextField(max_length=255)
+    hecha = models.BooleanField(default=False)
+    lista = models.ForeignKey(Lista)
