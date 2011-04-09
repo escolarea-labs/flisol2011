@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from tarea.models import Tarea
 from django.utils import simplejson
 
@@ -15,4 +16,13 @@ def crear(request):
         return HttpResponse(simplejson.dumps(result), mimetype='application/json')
     else:
         return HttpResponseRedirect(reverse('lista', args=[tarea.lista.codigo,]))
-        
+
+@csrf_exempt
+def cambiar_hecha(request, tarea_id):
+    if request.method == "POST":
+        tarea = Tarea.objects.get(id=tarea_id)
+        tarea.hecha = not tarea.hecha
+        tarea.save()
+        return HttpResponse()
+    else:
+        raise Http404
