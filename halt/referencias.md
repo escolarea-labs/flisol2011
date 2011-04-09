@@ -1,6 +1,6 @@
 !SLIDE bullets
 
-##Esta presentación
+##Esta presentación y ¡Chaspipi!
 
 * http://escolarea.github.com/flisol2011/
 
