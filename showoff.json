@@ -2,6 +2,11 @@
     "name": "Introducción al desarrollo web",
     "sections": 
         [ 
-            {"section":"basics"},
+            {"section":"whoami"},
+            {"section":"http"},
+            {"section":"rest"},
+            {"section":"wsgi"},
+            {"section":"mvc"},
+            {"section":"halt"}
         ]
-    }
+}
