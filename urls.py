@@ -15,6 +15,12 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^$', 'lista.views.crear',
+        name='home'),
+
+    url(r'^(?P<codigo>[a-zA-Z0-9]+)/$', 'lista.views.mostrar',
+        name='lista'),
 )
 
 

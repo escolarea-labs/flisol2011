@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form id="form_tarea" method="POST" action="/tarea/crear">
+            <textarea id="id_descripcion" name="descripcion" ></textarea>
+            <input type="submit" id="id_agregar" name="agregar" value="Agregar">
+    </form>
+{% endblock %}
