@@ -6,46 +6,10 @@
     <title>¡Chaspipi! :D</title>
 
     <link href="/static/base.css" rel="stylesheet" type="text/css">
+    <link href="/static/lista.css" rel="stylesheet" type="text/css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(function() {
-            $('#id_descripcion').keydown(function(event) {
-                if (event.keyCode == '13') {
-                    event.preventDefault();
-
-                    $.ajax({
-                                type: "POST",
-                                url: $("#form_tarea").attr('action'),
-                                data: $("#form_tarea").serialize(),
-                                dataType: "json",
-
-                                success: function(data) {
-                                    $('#lista_tareas').prepend('<li>'
-                                            + '<input type="checkbox" name="hecha" value="' + data.id + '"> <span>'
-                                            + $('#id_descripcion').val()
-                                            + ' </span></li>');
-                                    $('#id_descripcion').val("");
-                                }
-                            });
-                }
-            });
-
-            $('.hecha-check').change(function() {
-                $.ajax({
-                            type: "POST",
-                            url: '/tarea/'+$(this).val()+'/hecha/',
-                        });
-
-
-                if ($(this).is(':checked')) {
-                    $(this).next('span').addClass("tachado");
-                } else {
-                    $(this).next('span').removeClass("tachado");
-                }
-            });
-        });
-    </script>
+    <script src="/static/lista.js" type="text/javascript"></script>
 
 </head>
 <body>
