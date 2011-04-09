@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form id="form_tarea" method="POST" action="/tarea/crear">
-            <textarea id="id_descripcion" name="descripcion" ></textarea>
-            <input type="submit" id="id_agregar" name="agregar" value="Agregar">
+    <form id="form_tarea" method="POST" action="/tarea/crear/">
+        {% csrf_token %}
+        <input type="hidden" id="id_lista" name="lista" value="{{ lista.id }}">
+        <input type="text" id="id_descripcion" name="descripcion" ></textarea>
+        <input type="submit" id="id_agregar" name="agregar" value="Agregar">
     </form>
+
+    {% if lista.tarea_set.exists %}
+        <ul id="lista_tareas">
+        {% for tarea in lista.tarea_set.all %}
+            <li>
+                <input type="checkbox" name="hecha" value="{{ tarea.id }}" {% if tarea.hecha %}checked{% endif %}>
+                {{ tarea.descripcion }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}

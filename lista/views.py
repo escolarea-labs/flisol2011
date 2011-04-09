@@ -2,6 +2,7 @@ import random
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 from lista.models import Lista
 
 def crear(request):
@@ -26,4 +27,5 @@ def crear(request):
     return HttpResponseRedirect(reverse('lista', args=[cod,]))
 
 def mostrar(request, codigo):
-    return render_to_response('lista/mostar.html')
+    lista = Lista.objects.get(codigo=codigo)
+    return render_to_response('lista/mostar.html', {'lista':lista}, context_instance=RequestContext(request))

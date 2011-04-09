@@ -21,6 +21,8 @@ urlpatterns = patterns('',
 
     url(r'^(?P<codigo>[a-zA-Z0-9]+)/$', 'lista.views.mostrar',
         name='lista'),
+
+    url(r'^tarea/', include('tarea.urls')),
 )
 
 
