@@ -34,7 +34,8 @@
         
         return render_to_response('lista/mostar.html',
                         {'lista':lista},
-                        context_instance=RequestContext(request))
+                        context_instance=
+                            RequestContext(request))
 
 
 !SLIDE code small
@@ -64,7 +65,8 @@
                    value="{{ tarea.id }}" class="hecha-check"
                    {% if tarea.hecha %}checked{% endif %}>
 
-            <span class="{% if tarea.hecha %}tachado{% endif %}">
+            <span class=
+                "{% if tarea.hecha %}tachado{% endif %}">
                 {{ tarea.descripcion }}
             </span>
                 
