@@ -6,6 +6,33 @@
     <title>¡Chaspipi! :D</title>
 
     <link href="/static/base.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('#id_descripcion').keydown(function(event){
+                if (event.keyCode == '13') {
+                    event.preventDefault();
+
+                    $.ajax({
+                        type: "POST",
+                        url: $("#form_tarea").attr('action'),
+                        data: $("#form_tarea").serialize(),
+                        dataType: "json",
+                        success: function(data){
+                            $('#lista_tareas').prepend('<li>'
+                               +'<input type="checkbox" name="hecha" value="'+ data.id+'"> '
+                               + $('#id_descripcion').val()
+                               +  ' </li>');
+                            $('#id_descripcion').val("");
+                        }
+                            });
+
+                }
+
+            });
+        });
+    </script>
     
 </head>
 <body>

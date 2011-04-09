@@ -28,4 +28,5 @@ def crear(request):
 
 def mostrar(request, codigo):
     lista = Lista.objects.get(codigo=codigo)
+    lista.save()
     return render_to_response('lista/mostar.html', {'lista':lista}, context_instance=RequestContext(request))

@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from tarea.models import Tarea
+from django.utils import simplejson
 
 def crear(request):
     if request.method == "POST":
@@ -8,6 +9,10 @@ def crear(request):
                                      lista_id=request.POST['lista'])
     else:
         raise Http404
-    
-    return HttpResponseRedirect(reverse('lista', args=[tarea.lista.codigo,]))
+
+    if request.is_ajax():
+        result = {"id":tarea.id}
+        return HttpResponse(simplejson.dumps(result), mimetype='application/json')
+    else:
+        return HttpResponseRedirect(reverse('lista', args=[tarea.lista.codigo,]))
         
